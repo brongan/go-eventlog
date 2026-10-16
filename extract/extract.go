@@ -151,6 +151,7 @@ func getSeparatorInfo(hash crypto.Hash) *separatorInfo {
 	sepData := [][]byte{{0, 0, 0, 0}, {0xff, 0xff, 0xff, 0xff}}
 	sepDigests := make([][]byte, 0, len(sepData))
 	for _, value := range sepData {
+		hasher.Reset()
 		hasher.Write(value)
 		sepDigests = append(sepDigests, hasher.Sum(nil))
 	}
